@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "postgresql_repository"
+version = "0.0.1"
+description = "Base repository for postgresql"
+readme = "README.md"
+requires-python = ">=3.7"
