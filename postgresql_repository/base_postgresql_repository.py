@@ -54,7 +54,12 @@ class BasePostgreSQLRepository(Generic[T], ABC):
             return self._map_to_model(record) if record else None
 
     async def create(self, model: T) -> T:
-        data = {k: v for k, v in self._map_to_db(model).items() if v is not None}
+        data = {}
+        for k,v in self._map_to_db(model).items():
+            if v is not None:
+                if isinstance(v, Enum):
+                    v = v.value
+                data[k] = v
 
         columns = ', '.join(data.keys())
         placeholders = ', '.join([f'${i+1}' for i in range(len(data))])
