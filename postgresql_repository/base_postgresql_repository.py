@@ -26,6 +26,9 @@ class BasePostgreSQLRepository(Generic[T], ABC):
         )
 
     def _map_to_model(self, record: asyncpg.Record, model: Type[T]=None) -> T:
+        if not record:
+            return
+
         if model:
             return model(**dict(record))
         else:
