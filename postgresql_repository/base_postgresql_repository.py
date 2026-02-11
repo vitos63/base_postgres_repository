@@ -2,6 +2,7 @@ import asyncpg
 from abc import ABC
 from dataclasses import asdict, is_dataclass
 from typing import TypeVar, Generic, Type, List, Optional
+from enum import Enum
 
 from postgresql_repository.models.database_connection import DatabaseConnection
 
